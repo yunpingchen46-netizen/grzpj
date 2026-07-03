@@ -110,7 +110,7 @@ function VideoPlayer({
           muted
           loop
           playsInline
-          preload="auto"
+          preload="none"
           style={{ width: "100%", height: "100%", display: "block" }}
         />
         {/* View full demo tip */}

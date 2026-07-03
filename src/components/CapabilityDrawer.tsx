@@ -85,7 +85,7 @@ function ItemMedia({ item, mediaIdx, onMediaClick }: { item: CapabilityItem; med
   const content = (
     <div style={{ position: "relative", aspectRatio: "16/9", background: "#111", overflow: "hidden", marginBottom: 12 }}>
       {isVideo ? (
-        <video src={item.src} autoPlay muted loop playsInline preload="metadata" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
+        <video src={item.src} autoPlay muted loop playsInline preload="none" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
       ) : isImage ? (
         <img src={item.src} alt={item.alt} style={{ width: "100%", height: "100%", objectFit: "contain" }} />
       ) : (
@@ -269,7 +269,7 @@ export default function CapabilityDrawer({ capability, onClose }: { capability: 
                           const inner = (
                             <div style={{ aspectRatio: "16/9", background: "#111", overflow: "hidden", position: "relative" }}>
                               {isVideo ? (
-                                <video src={it.src} autoPlay muted loop playsInline preload="metadata" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
+                                <video src={it.src} autoPlay muted loop playsInline preload="none" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
                               ) : realImg ? (
                                 <img src={it.src} alt={it.alt || ""} style={{ width: "100%", height: "100%", objectFit: "contain" }} />
                               ) : (
