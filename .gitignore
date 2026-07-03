@@ -39,10 +39,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-public/assets/
-public/images/marquee/
 node_modules/
 .next/
+
+# Large video files
 *.mp4
 *.mov
 *.avi
