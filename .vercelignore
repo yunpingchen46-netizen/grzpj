@@ -1,7 +1,7 @@
+docs/
+scripts/extract.mjs
+scripts/download-assets.mjs
 *.mp4
 *.mov
 *.avi
 *.webm
-docs/
-scripts/extract.mjs
-scripts/download-assets.mjs

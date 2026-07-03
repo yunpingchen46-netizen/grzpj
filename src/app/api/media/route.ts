@@ -15,33 +15,35 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: "Not found" }, { status: 404 });
     }
 
-    // Private blob — must stream through server, redirect won't work
-    const response = await fetch(blob.url);
+    // Fetch blob content fully before responding
+    const startTime = Date.now();
+    const res = await fetch(blob.url);
+    const buffer = await res.arrayBuffer();
+    console.log(`[media] ${pathname}: fetched ${buffer.byteLength} bytes in ${Date.now() - startTime}ms`);
+
     const headers = new Headers();
     headers.set("Content-Type", blob.contentType || "application/octet-stream");
-    headers.set("Content-Length", String(blob.size));
+    headers.set("Content-Length", String(buffer.byteLength));
     headers.set("Cache-Control", "public, max-age=31536000, immutable");
-    headers.set("Accept-Ranges", "bytes");
 
-    // Handle video range requests
     const range = request.headers.get("range");
     if (range && blob.contentType?.startsWith("video/")) {
       const parts = range.replace(/bytes=/, "").split("-");
       const start = parseInt(parts[0], 10);
-      const end = parts[1] ? parseInt(parts[1], 10) : blob.size - 1;
-      const chunkSize = end - start + 1;
+      const end = parts[1] ? parseInt(parts[1], 10) : buffer.byteLength - 1;
+      const sliced = buffer.slice(start, end + 1);
 
-      const rangeRes = await fetch(blob.url, { headers: { Range: `bytes=${start}-${end}` } });
-      const rangeHeaders = new Headers(rangeRes.headers);
-      rangeHeaders.set("Content-Range", `bytes ${start}-${end}/${blob.size}`);
+      const rangeHeaders = new Headers();
+      rangeHeaders.set("Content-Type", blob.contentType);
+      rangeHeaders.set("Content-Range", `bytes ${start}-${end}/${buffer.byteLength}`);
+      rangeHeaders.set("Content-Length", String(sliced.byteLength));
       rangeHeaders.set("Accept-Ranges", "bytes");
-      rangeHeaders.set("Content-Length", String(chunkSize));
       rangeHeaders.set("Cache-Control", "public, max-age=31536000, immutable");
 
-      return new NextResponse(rangeRes.body, { status: 206, headers: rangeHeaders });
+      return new NextResponse(sliced, { status: 206, headers: rangeHeaders });
     }
 
-    return new NextResponse(response.body, { status: 200, headers });
+    return new NextResponse(buffer, { status: 200, headers });
   } catch (error) {
     console.error("Blob media error:", error);
     return NextResponse.json({ error: "Failed to load media" }, { status: 500 });
