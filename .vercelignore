@@ -3,8 +3,6 @@
 *.avi
 *.webm
 *.gif
-public/assets/
-public/images/marquee/
 docs/
 scripts/extract.mjs
 scripts/download-assets.mjs
