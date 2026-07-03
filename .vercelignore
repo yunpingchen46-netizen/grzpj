@@ -2,7 +2,6 @@
 *.mov
 *.avi
 *.webm
-*.gif
 docs/
 scripts/extract.mjs
 scripts/download-assets.mjs
