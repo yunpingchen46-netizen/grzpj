@@ -8,36 +8,35 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    // Get blob metadata and serve via signed URL with caching
     const blob = await head(pathname);
     if (!blob) {
       return NextResponse.json({ error: "Not found" }, { status: 404 });
     }
 
-    // Fetch the actual blob content
+    // Fetch blob content via internal URL
     const response = await fetch(blob.url);
-    const headers = new Headers(response.headers);
+    const headers = new Headers();
+    headers.set("Content-Type", blob.contentType || "application/octet-stream");
+    headers.set("Content-Length", String(blob.size));
     headers.set("Cache-Control", "public, max-age=31536000, immutable");
-    headers.set("Access-Control-Allow-Origin", "*");
+    headers.set("Accept-Ranges", "bytes");
 
-    // For videos, we need to handle range requests
+    // Handle video range requests
     const rangeHeader = request.headers.get("range");
     if (rangeHeader && blob.contentType?.startsWith("video/")) {
-      const contentLength = parseInt(headers.get("content-length") || "0");
       const parts = rangeHeader.replace(/bytes=/, "").split("-");
       const start = parseInt(parts[0], 10);
-      const end = parts[1] ? parseInt(parts[1], 10) : contentLength - 1;
+      const end = parts[1] ? parseInt(parts[1], 10) : blob.size - 1;
       const chunkSize = end - start + 1;
 
       const rangeResponse = await fetch(blob.url, {
         headers: { Range: `bytes=${start}-${end}` },
       });
       const rangeHeaders = new Headers(rangeResponse.headers);
-      rangeHeaders.set("Content-Range", `bytes ${start}-${end}/${contentLength}`);
+      rangeHeaders.set("Content-Range", `bytes ${start}-${end}/${blob.size}`);
       rangeHeaders.set("Accept-Ranges", "bytes");
       rangeHeaders.set("Content-Length", String(chunkSize));
       rangeHeaders.set("Cache-Control", "public, max-age=31536000, immutable");
-      rangeHeaders.set("Access-Control-Allow-Origin", "*");
 
       return new NextResponse(rangeResponse.body, {
         status: 206,

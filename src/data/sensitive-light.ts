@@ -111,10 +111,10 @@ export const sensitiveLightData: ProjectShowcaseData = {
   video: "/assets/projects/sensitive-light/game-demo.mp4",
   videoPoster: "/assets/projects/sensitive-light/cover.png",
   onlineImages: [
-    { src: "/assets/projects/sensitive-light/stage-one.gif", label: "01 / FEEL THE PRESSURE", alt: "第一关动态演示" },
-    { src: "/assets/projects/sensitive-light/stage-two.gif", label: "02 / UNDERSTAND", alt: "第二关动态演示" },
-    { src: "/assets/projects/sensitive-light/stage-two-blackhole.gif", label: "02 / BLACKHOLE", alt: "第二关黑洞效果" },
-    { src: "/assets/projects/sensitive-light/stage-three.gif", label: "03 / RESPOND", alt: "第三关动态演示" },
+    { src: "/api/media?pathname=portfolio/sensitive-light/stage-one.gif", label: "01 / FEEL THE PRESSURE", alt: "第一关动态演示" },
+    { src: "/api/media?pathname=portfolio/sensitive-light/stage-two.gif", label: "02 / UNDERSTAND", alt: "第二关动态演示" },
+    { src: "/api/media?pathname=portfolio/sensitive-light/stage-two-blackhole.gif", label: "02 / BLACKHOLE", alt: "第二关黑洞效果" },
+    { src: "/api/media?pathname=portfolio/sensitive-light/stage-three.gif", label: "03 / RESPOND", alt: "第三关动态演示" },
   ],
   images: [],
 };
