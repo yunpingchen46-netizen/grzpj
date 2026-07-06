@@ -47,6 +47,8 @@ node_modules/
 *.mov
 *.avi
 *.webm
+*.gif
+public/assets/
 
 .vercel
 .env*
