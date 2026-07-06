@@ -3,14 +3,14 @@
 import { useState, useEffect } from "react";
 
 const ROTATING_ITEMS = [
-  { text: "AI 驱动的品牌识别", image: "https://grzpj.vercel.app/images/slider/slide-1.jpg" },
-  { text: "生成式视觉系统", image: "https://grzpj.vercel.app/images/slider/slide-2.jpg" },
-  { text: "智能交互体验", image: "https://grzpj.vercel.app/images/slider/slide-3.jpg" },
-  { text: "数据叙事设计", image: "https://grzpj.vercel.app/images/slider/slide-4.jpg" },
-  { text: "动态视觉实验", image: "https://grzpj.vercel.app/images/slider/slide-5.jpg" },
-  { text: "参数化创意工具", image: "https://grzpj.vercel.app/images/slider/slide-6.jpg" },
-  { text: "跨媒介品牌策略", image: "https://grzpj.vercel.app/images/slider/slide-7.jpg" },
-  { text: "AI 协作创作流程", image: "https://grzpj.vercel.app/images/slider/slide-8.jpg" },
+  { text: "AI 驱动的品牌识别", image: "/images/slider/slide-1.jpg" },
+  { text: "生成式视觉系统", image: "/images/slider/slide-2.jpg" },
+  { text: "智能交互体验", image: "/images/slider/slide-3.jpg" },
+  { text: "数据叙事设计", image: "/images/slider/slide-4.jpg" },
+  { text: "动态视觉实验", image: "/images/slider/slide-5.jpg" },
+  { text: "参数化创意工具", image: "/images/slider/slide-6.jpg" },
+  { text: "跨媒介品牌策略", image: "/images/slider/slide-7.jpg" },
+  { text: "AI 协作创作流程", image: "/images/slider/slide-8.jpg" },
 ];
 
 export default function RotatingSlider() {

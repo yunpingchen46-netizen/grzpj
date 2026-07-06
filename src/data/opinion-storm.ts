@@ -60,13 +60,13 @@ export const opinionStormData: ProjectShowcaseData = {
   video: "//player.bilibili.com/player.html?bvid=BV1jYMA6oEFF&autoplay=0",
   videoPoster: undefined,
   onlineImages: [
-    { src: "https://grzpj.vercel.app/assets/projects/opinion-storm/online-01.png", label: "ONLINE EXPERIENCE 01", alt: "线上体验展示 01" },
-    { src: "https://grzpj.vercel.app/assets/projects/opinion-storm/online-02.png", label: "ONLINE EXPERIENCE 02", alt: "线上体验展示 02" },
-    { src: "https://grzpj.vercel.app/assets/projects/opinion-storm/online-03.png", label: "ONLINE EXPERIENCE 03", alt: "线上体验展示 03" },
+    { src: "/assets/projects/opinion-storm/online-01.png", label: "ONLINE EXPERIENCE 01", alt: "线上体验展示 01" },
+    { src: "/assets/projects/opinion-storm/online-02.png", label: "ONLINE EXPERIENCE 02", alt: "线上体验展示 02" },
+    { src: "/assets/projects/opinion-storm/online-03.png", label: "ONLINE EXPERIENCE 03", alt: "线上体验展示 03" },
   ],
   images: [
-    { src: "https://grzpj.vercel.app/assets/projects/opinion-storm/installation.jpg", label: "OFFLINE INSTALLATION", alt: "线下互动装置整体空间" },
-    { src: "https://grzpj.vercel.app/assets/projects/opinion-storm/audience.jpg", label: "EXHIBITION EXPERIENCE", alt: "观众进入装置或现场体验照片" },
+    { src: "/assets/projects/opinion-storm/installation.jpg", label: "OFFLINE INSTALLATION", alt: "线下互动装置整体空间" },
+    { src: "/assets/projects/opinion-storm/audience.jpg", label: "EXHIBITION EXPERIENCE", alt: "观众进入装置或现场体验照片" },
   ],
-  qrcode: "https://grzpj.vercel.app/assets/projects/opinion-storm/qrcode.png",
+  qrcode: "/assets/projects/opinion-storm/qrcode.png",
 };

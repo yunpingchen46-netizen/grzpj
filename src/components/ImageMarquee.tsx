@@ -1,12 +1,12 @@
 const MARQUEE_IMAGES = [
-  { src: "https://grzpj.vercel.app/images/marquee/01.png", alt: "轮播图 01" },
-  { src: "https://grzpj.vercel.app/images/marquee/02.png", alt: "轮播图 02" },
-  { src: "https://grzpj.vercel.app/images/marquee/03.png", alt: "轮播图 03" },
-  { src: "https://grzpj.vercel.app/images/marquee/04.png", alt: "轮播图 04" },
-  { src: "https://grzpj.vercel.app/images/marquee/05.png", alt: "轮播图 05" },
-  { src: "https://grzpj.vercel.app/images/marquee/06.jpg", alt: "轮播图 06" },
-  { src: "https://grzpj.vercel.app/images/marquee/07.jpg", alt: "轮播图 07" },
-  { src: "https://grzpj.vercel.app/images/marquee/08.jpg", alt: "轮播图 08" },
+  { src: "/images/marquee/01.png", alt: "轮播图 01" },
+  { src: "/images/marquee/02.png", alt: "轮播图 02" },
+  { src: "/images/marquee/03.png", alt: "轮播图 03" },
+  { src: "/images/marquee/04.png", alt: "轮播图 04" },
+  { src: "/images/marquee/05.png", alt: "轮播图 05" },
+  { src: "/images/marquee/06.jpg", alt: "轮播图 06" },
+  { src: "/images/marquee/07.jpg", alt: "轮播图 07" },
+  { src: "/images/marquee/08.jpg", alt: "轮播图 08" },
 ];
 
 export default function ImageMarquee() {
