@@ -47,9 +47,6 @@ node_modules/
 *.mov
 *.avi
 *.webm
-*.gif
-public/assets/capabilities/modeling-rendering/web-0*.png
-public/assets/capabilities/modeling-rendering/web-1*.png
 
 .vercel
 .env*
