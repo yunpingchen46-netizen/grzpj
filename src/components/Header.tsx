@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 
-const CONTACT_QR = "/assets/contact/wechat-qr.png";
+const CONTACT_QR = "https://grzpj.vercel.app/assets/contact/wechat-qr.png";
 
 const DROPDOWN_ITEMS = [
   { label: "舆论中的风暴", href: "#storm" },
