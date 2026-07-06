@@ -78,13 +78,16 @@ function ClickableMedia({
 }
 
 function ItemMedia({ item, mediaIdx, onMediaClick }: { item: CapabilityItem; mediaIdx: number; onMediaClick: (idx: number) => void }) {
-  const isVideo = item.mediaType === "video" && !item.placeholder && item.src;
+  const isBilibili = item.src?.includes("player.bilibili.com");
+  const isVideo = !isBilibili && item.mediaType === "video" && !item.placeholder && item.src;
   const isImage = item.mediaType === "image" && !item.placeholder && item.src;
-  const showReal = isVideo || isImage;
+  const showReal = isBilibili || isVideo || isImage;
 
   const content = (
     <div style={{ position: "relative", aspectRatio: "16/9", background: "#111", overflow: "hidden", marginBottom: 12 }}>
-      {isVideo ? (
+      {isBilibili ? (
+        <iframe src={item.src} allowFullScreen style={{ width: "100%", height: "100%", border: "none" }} />
+      ) : isVideo ? (
         <video src={item.src} autoPlay muted loop playsInline preload="none" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
       ) : isImage ? (
         <img src={item.src} alt={item.alt} style={{ width: "100%", height: "100%", objectFit: "contain" }} />
@@ -100,7 +103,7 @@ function ItemMedia({ item, mediaIdx, onMediaClick }: { item: CapabilityItem; med
 
   if (!showReal) return content;
   return (
-    <ClickableMedia mediaIndex={mediaIdx} onClick={onMediaClick} hint={isVideo ? "点击播放完整视频 ▶" : "点击放大查看 ↗"}>
+    <ClickableMedia mediaIndex={mediaIdx} onClick={onMediaClick} hint={isBilibili ? "点击观看 Bilibili ▶" : isVideo ? "点击播放完整视频 ▶" : "点击放大查看 ↗"}>
       {content}
     </ClickableMedia>
   );
@@ -265,10 +268,13 @@ export default function CapabilityDrawer({ capability, onClose }: { capability: 
                         {s.items?.map((it, i) => {
                           const realImg = it.src && !it.placeholder;
                           const idx = finalStart + (s.items?.slice(0, i).filter(x => x.src && !x.placeholder).length || 0);
-                          const isVideo = realImg && it.src && it.src.match(/\.(mp4|webm|mov|avi)(\?|$)/i);
+                          const isBili = realImg && it.src && it.src.includes("player.bilibili.com");
+                          const isVideo = !isBili && realImg && it.src && it.src.match(/\.(mp4|webm|mov|avi)(\?|$)/i);
                           const inner = (
                             <div style={{ aspectRatio: "16/9", background: "#111", overflow: "hidden", position: "relative" }}>
-                              {isVideo ? (
+                              {isBili ? (
+                                <iframe src={it.src} allowFullScreen style={{ width: "100%", height: "100%", border: "none" }} />
+                              ) : isVideo ? (
                                 <video src={it.src} autoPlay muted loop playsInline preload="none" style={{ width: "100%", height: "100%", objectFit: "contain" }} />
                               ) : realImg ? (
                                 <img src={it.src} alt={it.alt || ""} style={{ width: "100%", height: "100%", objectFit: "contain" }} />
@@ -279,7 +285,7 @@ export default function CapabilityDrawer({ capability, onClose }: { capability: 
                           );
                           if (!realImg) return <div key={i}>{inner}</div>;
                           return (
-                            <ClickableMedia key={i} mediaIndex={idx} onClick={handleMediaClick} hint={isVideo ? "点击播放完整视频 ▶" : "点击放大查看 ↗"}>
+                            <ClickableMedia key={i} mediaIndex={idx} onClick={handleMediaClick} hint={isBili ? "点击观看 Bilibili ▶" : isVideo ? "点击播放完整视频 ▶" : "点击放大查看 ↗"}>
                               {inner}
                             </ClickableMedia>
                           );

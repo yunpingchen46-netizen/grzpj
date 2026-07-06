@@ -57,7 +57,7 @@ export const opinionStormData: ProjectShowcaseData = {
       description: "Gemini迭代 / 部署 / 展览",
     },
   ],
-  video: "/api/media?pathname=portfolio/opinion-storm/online-demo.webm",
+  video: "//player.bilibili.com/player.html?bvid=BV1jYMA6oEFF&autoplay=0",
   videoPoster: undefined,
   onlineImages: [
     { src: "/assets/projects/opinion-storm/online-01.png", label: "ONLINE EXPERIENCE 01", alt: "线上体验展示 01" },

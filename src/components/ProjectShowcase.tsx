@@ -56,10 +56,20 @@ function VideoPlayer({
   src: string;
   poster?: string;
 }) {
+  const isBilibili = src.includes("player.bilibili.com");
   const videoRef = useRef<HTMLVideoElement>(null);
   const [showTip, setShowTip] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [hasPlayed, setHasPlayed] = useState(false);
+
+  if (isBilibili) {
+    return (
+      <div className="relative w-full aspect-video bg-neutral-900 dark:bg-[#111] overflow-hidden">
+        <iframe src={src} allowFullScreen
+          className="w-full h-full" style={{ border: "none" }} />
+      </div>
+    );
+  }
 
   useEffect(() => {
     const el = videoRef.current;

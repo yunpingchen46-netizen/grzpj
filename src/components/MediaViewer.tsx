@@ -28,8 +28,9 @@ export default function MediaViewer({
   const closeBtnRef = useRef<HTMLButtonElement>(null);
 
   const item = items.length > 0 ? items[Math.min(index, items.length - 1)] : null;
-  const isVideo = item?.type === "video";
-  const isImage = item?.type === "image";
+  const isBilibili = item?.src?.includes("player.bilibili.com");
+  const isVideo = !isBilibili && item?.type === "video";
+  const isImage = !isBilibili && item?.type === "image";
 
   const goNext = useCallback(() => {
     if (index < items.length - 1) {
@@ -108,7 +109,10 @@ export default function MediaViewer({
       {/* Media */}
       <div style={{ maxWidth: "92vw", maxHeight: "88dvh", display: "flex", alignItems: "center", justifyContent: "center" }}
         onClick={(e) => e.stopPropagation()}>
-        {isVideo ? (
+        {isBilibili ? (
+          <iframe src={item.src} allowFullScreen
+            style={{ width: "92vw", height: "85dvh", border: "none" }} />
+        ) : isVideo ? (
           <video
             ref={videoRef}
             src={item.src}
