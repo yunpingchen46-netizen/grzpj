@@ -47,6 +47,9 @@ node_modules/
 *.mov
 *.avi
 *.webm
+public/assets/projects/sensitive-light/stage-two-blackhole.gif
+public/assets/projects/sensitive-light/stage-two.gif
+public/assets/projects/sensitive-light/stage-three.gif
 
 .vercel
 .env*
