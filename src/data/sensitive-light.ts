@@ -109,7 +109,7 @@ export const sensitiveLightData: ProjectShowcaseData = {
     },
   ],
   video: "//player.bilibili.com/player.html?bvid=BV1qaMA6tEsD&autoplay=0",
-  videoPoster: "/assets/projects/sensitive-light/cover.png",
+  videoPoster: "/assets/projects/sensitive-light/cover.webp",
   onlineImages: [
     { src: "/assets/projects/sensitive-light/stage-one.gif", label: "01 / FEEL THE PRESSURE", alt: "第一关动态演示" },
     { src: "/assets/projects/sensitive-light/stage-two.gif", label: "02 / UNDERSTAND", alt: "第二关动态演示" },

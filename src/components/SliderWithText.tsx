@@ -11,8 +11,8 @@ const AI_TOOLS = [
   { name: "Midjourney", icon: "midjourney" },
   { name: "GPT", icon: "chatgpt" },
   { name: "Gemini", icon: "gemini" },
-  { name: "即梦", icon: "jimeng.png" },
-  { name: "可灵", icon: "kling.png" },
+  { name: "即梦", icon: "jimeng.webp" },
+  { name: "可灵", icon: "kling.webp" },
   { name: "Codex", icon: "codex" },
   { name: "Claude Code", icon: "claude" },
 ];

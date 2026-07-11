@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     "探索人工智能与视觉设计的交汇点 — AI 赋能的全栈创意工作室，从策略到执行，从代码到视觉。",
   icons: {
     icon: "/seo/favicon.ico",
-    apple: "/seo/apple-touch-icon.png",
+    apple: "/seo/apple-touch-icon.webp",
   },
 };
 
@@ -37,8 +37,8 @@ export default function RootLayout({
     >
       <head>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-        <link rel="icon" href="/seo/favicon-32x32.png" sizes="32x32" />
-        <link rel="icon" href="/seo/favicon-16x16.png" sizes="16x16" />
+        <link rel="icon" href="/seo/favicon-32x32.webp" sizes="32x32" />
+        <link rel="icon" href="/seo/favicon-16x16.webp" sizes="16x16" />
       </head>
       <body className="min-h-full bg-background text-foreground">{children}</body>
     </html>

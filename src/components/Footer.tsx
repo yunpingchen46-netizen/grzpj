@@ -13,7 +13,7 @@ export default function Footer() {
     return () => document.removeEventListener("keydown", onKey);
   }, [qrOpen]);
 
-  const qrSrc = qrOpen === "wechat" ? "/assets/contact/wechat-qr.png" : qrOpen === "xhs" ? "/assets/contact/xiaohongshu-qr.png" : "";
+  const qrSrc = qrOpen === "wechat" ? "/assets/contact/wechat-qr.webp" : qrOpen === "xhs" ? "/assets/contact/xiaohongshu-qr.webp" : "";
   const qrTitle = qrOpen === "wechat" ? "微信" : "小红书";
 
   return (
